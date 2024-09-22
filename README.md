@@ -33,13 +33,13 @@ Where:
 
 Before we jump into solving this, let’s briefly recall what these derivatives mean:
 
-- **First Derivative** ($\( \frac{\partial u}{\partial t} \)$): Represents the rate of change of the wave's displacement over time, essentially the velocity of the wave at a given point.
-- **Second Derivative** ($\( \frac{\partial^2 u}{\partial t^2} \)$): Represents how the velocity itself changes over time, i.e., the acceleration of the wave.
+- **First Derivative** ($$\( \frac{\partial u}{\partial t} \)$$): Represents the rate of change of the wave's displacement over time, essentially the velocity of the wave at a given point.
+- **Second Derivative** ($$\( \frac{\partial^2 u}{\partial t^2} \)$$): Represents how the velocity itself changes over time, i.e., the acceleration of the wave.
 
 Similarly, for space:
 
-- **First Spatial Derivative** ($\( \frac{\partial u}{\partial x} \)$): Represents the slope or gradient of the wave, indicating how steep the wave is at a given point.
-- **Second Spatial Derivative** ($\( \frac{\partial^2 u}{\partial x^2} \)$): Represents the curvature of the wave. A positive value means the wave is curving upwards, and a negative value means it's curving downwards.
+- **First Spatial Derivative** ($$\( \frac{\partial u}{\partial x} \)$$): Represents the slope or gradient of the wave, indicating how steep the wave is at a given point.
+- **Second Spatial Derivative** ($$\( \frac{\partial^2 u}{\partial x^2} \)$$): Represents the curvature of the wave. A positive value means the wave is curving upwards, and a negative value means it's curving downwards.
 
 ## 3. Discretizing the Wave Equation
 
@@ -47,15 +47,15 @@ To solve the wave equation numerically, we approximate these continuous derivati
 
 ### Discretizing Space
 
-We divide the spatial domain into small intervals of size $\( \Delta x \)$ (or `dx` in the code). If the total length of the domain is \( L \), we have \( N = \frac{L}{\Delta x} \) points in space, represented as \( x_0, x_1, \ldots, x_N \).
+We divide the spatial domain into small intervals of size $\( \Delta x \)$ (or `dx` in the code). If the total length of the domain is \( L \), we have \( N = \frac{L}{\Delta x} \) points in space, represented as $\( x_0, x_1, \ldots, x_N \)$.
 
-- For any point $\( i \)$, the position \( x_i \) is given by \( x_i = i \cdot \Delta x \).
+- For any point $\( i \)$, the position $\( x_i \)$ is given by $\( x_i = i \cdot \Delta x \)$.
 
 ### Discretizing Time
 
-Similarly, time is divided into small steps of size \( \Delta t \) (or `dt`). For a given time step \( n \), the time is \( t_n = n \cdot \Delta t \).
+Similarly, time is divided into small steps of size $\( \Delta t \)$ (or `dt`). For a given time step $\( n \)$, the time is $\( t_n = n \cdot \Delta t \)$.
 
-- The value of \( u \) at position \( x_i \) and time \( t_n \) is represented as \( u_i^n \).
+- The value of $\( u \)$ at position $\( x_i \)$ and time $\( t_n \)$ is represented as $\( u_i^n \)$.
 
 ### Finite Difference Approximation
 
