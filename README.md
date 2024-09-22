@@ -8,7 +8,7 @@ TODO
 
 1. 1D Wave Simulation
 
-![Wave Simulation](assets/wave_simulation.gif)
+![Wave Simulation](assets/1d_wave_simulation.gif)
 
 
 
