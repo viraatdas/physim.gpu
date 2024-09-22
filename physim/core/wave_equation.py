@@ -1,7 +1,7 @@
 import jax.numpy as jnp
 from jax import jit
 
-class WaveEquation:
+class WaveEquation1D:
     def __init__(self, space_size, dx, wave_speed):
         self.space_size = space_size
         self.dx = dx

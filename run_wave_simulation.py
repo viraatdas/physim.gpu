@@ -1,13 +1,13 @@
-from physim.core.wave_equation import WaveEquation
+from physim.core.wave_equation import WaveEquation1D
 from physim.simulation import Simulation
 from physim.visualizer import Visualizer
 
-def main():
+def wave_simulation_1d():
     space_size = 200  # Number of spatial points
     dx = 0.01        # Spatial step size
     wave_speed = 1.0  # Wave speed
 
-    wave_eq = WaveEquation(space_size, dx, wave_speed)
+    wave_eq = WaveEquation1D(space_size, dx, wave_speed)
     sim = Simulation(wave_eq)
     viz = Visualizer(wave_eq)
 
@@ -18,7 +18,16 @@ def main():
     u_history = sim.run(steps)
 
     # Animate the results
-    viz.animate(u_history, interval=interval, save=True, filename='wave_simulation.gif')
+    viz.animate(u_history, interval=interval)
+
+def wave_simulation_2d():
+    pass
+
+
+def main():
+    wave_simulation_1d()
+    # wave_simulation_2d()
+  
 
 if __name__ == "__main__":
     main()
