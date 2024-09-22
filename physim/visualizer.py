@@ -32,3 +32,36 @@ class Visualizer:
         else:
             plt.show()
 
+class Visualizer2D:
+    def __init__(self, wave_equation):
+        self.wave_equation = wave_equation
+        self.fig, self.ax = plt.subplots()
+        self.im = None
+
+    def init_plot(self):
+        u = np.array(self.wave_equation.u)
+        self.im = self.ax.imshow(u, animated=True, cmap='viridis', origin='lower',
+                                 extent=[0, self.wave_equation.nx * self.wave_equation.dx,
+                                         0, self.wave_equation.ny * self.wave_equation.dy])
+        self.ax.set_title("2D Wave Simulation")
+        self.ax.set_xlabel('x')
+        self.ax.set_ylabel('y')
+        return self.im,
+
+    def animate(self, u_history, interval, save=False, filename='wave_simulation_2d.gif', fps=30):
+        def update(frame):
+            u = np.array(u_history[frame])
+            self.im.set_array(u)
+            return self.im,
+
+        anim = FuncAnimation(self.fig, update, init_func=self.init_plot,
+                             frames=len(u_history), interval=interval, blit=True)
+
+        if save:
+            from matplotlib.animation import PillowWriter
+            writer = PillowWriter(fps=fps)
+            anim.save(filename, writer=writer)
+            print(f"Animation saved as {filename}")
+        else:
+            plt.show()
+
