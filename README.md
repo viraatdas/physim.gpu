@@ -24,22 +24,22 @@ $$\[
 
 
 Where:
-- \( u(x, t) \) is a function representing the wave's displacement at position \( x \) and time \( t \).
-- \( \frac{\partial^2 u}{\partial t^2} \) is the second derivative of \( u \) with respect to time, representing how the wave's acceleration changes over time.
-- \( \frac{\partial^2 u}{\partial x^2} \) is the second derivative of \( u \) with respect to space, representing how the curvature of the wave changes along the \( x \)-axis.
-- \( c \) is the wave speed, a constant that determines how fast the wave propagates through the medium.
+- $\( u(x, t) \)$ is a function representing the wave's displacement at position $\( x \)$ and time $\( t \)$.
+- $\( \frac{\partial^2 u}{\partial t^2} \)$ is the second derivative of $\( u \)$ with respect to time, representing how the wave's acceleration changes over time.
+- $\( \frac{\partial^2 u}{\partial x^2} \)$ is the second derivative of $\( u \)$ with respect to space, representing how the curvature of the wave changes along the $\( x \)$-axis.
+- $\( c \)$ is the wave speed, a constant that determines how fast the wave propagates through the medium.
 
 ## 2. Understanding the Derivatives
 
 Before we jump into solving this, let’s briefly recall what these derivatives mean:
 
-- **First Derivative** (\( \frac{\partial u}{\partial t} \)): Represents the rate of change of the wave's displacement over time, essentially the velocity of the wave at a given point.
-- **Second Derivative** (\( \frac{\partial^2 u}{\partial t^2} \)): Represents how the velocity itself changes over time, i.e., the acceleration of the wave.
+- **First Derivative** ($\( \frac{\partial u}{\partial t} \)$): Represents the rate of change of the wave's displacement over time, essentially the velocity of the wave at a given point.
+- **Second Derivative** ($\( \frac{\partial^2 u}{\partial t^2} \)$): Represents how the velocity itself changes over time, i.e., the acceleration of the wave.
 
 Similarly, for space:
 
-- **First Spatial Derivative** (\( \frac{\partial u}{\partial x} \)): Represents the slope or gradient of the wave, indicating how steep the wave is at a given point.
-- **Second Spatial Derivative** (\( \frac{\partial^2 u}{\partial x^2} \)): Represents the curvature of the wave. A positive value means the wave is curving upwards, and a negative value means it's curving downwards.
+- **First Spatial Derivative** ($\( \frac{\partial u}{\partial x} \)$): Represents the slope or gradient of the wave, indicating how steep the wave is at a given point.
+- **Second Spatial Derivative** ($\( \frac{\partial^2 u}{\partial x^2} \)$): Represents the curvature of the wave. A positive value means the wave is curving upwards, and a negative value means it's curving downwards.
 
 ## 3. Discretizing the Wave Equation
 
@@ -47,9 +47,9 @@ To solve the wave equation numerically, we approximate these continuous derivati
 
 ### Discretizing Space
 
-We divide the spatial domain into small intervals of size \( \Delta x \) (or `dx` in the code). If the total length of the domain is \( L \), we have \( N = \frac{L}{\Delta x} \) points in space, represented as \( x_0, x_1, \ldots, x_N \).
+We divide the spatial domain into small intervals of size $\( \Delta x \)$ (or `dx` in the code). If the total length of the domain is \( L \), we have \( N = \frac{L}{\Delta x} \) points in space, represented as \( x_0, x_1, \ldots, x_N \).
 
-- For any point \( i \), the position \( x_i \) is given by \( x_i = i \cdot \Delta x \).
+- For any point $\( i \)$, the position \( x_i \) is given by \( x_i = i \cdot \Delta x \).
 
 ### Discretizing Time
 
@@ -63,29 +63,29 @@ We approximate the derivatives in the wave equation using finite differences:
 
 - **Second Derivative in Time**:
 
-\[
+$$\[
 \frac{\partial^2 u}{\partial t^2} \approx \frac{u_i^{n+1} - 2u_i^n + u_i^{n-1}}{\Delta t^2}
-\]
+\]$$
 
 - **Second Derivative in Space**:
 
-\[
+$$\[
 \frac{\partial^2 u}{\partial x^2} \approx \frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{\Delta x^2}
-\]
+\]$$
 
 ## 4. Numerical Solution
 
 Substituting these finite differences into the wave equation gives us:
 
-\[
+$$\[
 \frac{u_i^{n+1} - 2u_i^n + u_i^{n-1}}{\Delta t^2} = c^2 \frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{\Delta x^2}
-\]
+\]$$
 
 Rearranging to solve for \( u_i^{n+1} \) (the value of \( u \) at the next time step):
 
-\[
+$$\[
 u_i^{n+1} = 2u_i^n - u_i^{n-1} + \frac{c^2 \Delta t^2}{\Delta x^2} (u_{i+1}^n - 2u_i^n + u_{i-1}^n)
-\]
+\]$$
 
 In the code, this is represented as:
 
@@ -102,9 +102,9 @@ u_next = 2 * u - u_prev + c**2 * dt**2 * u_xx  # Update rule for the wave
 
 For this numerical scheme to work correctly (not produce unrealistic results), the time step \( \Delta t \) must be small enough relative to \( \Delta x \) and the wave speed \( c \). This is given by the **Courant condition**:
 
-\[
+$$\[
 \Delta t \leq \frac{\Delta x}{c}
-\]
+\]$$
 
 In your code, you set the time step as:
 
