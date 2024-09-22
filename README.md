@@ -17,11 +17,11 @@ TODO
 ## 1. The Wave Equation in One Dimension
 
 The 1D wave equation describes how waves, such as sound waves or waves on a string, propagate over time. It is given by:
-$$
-\[
+
+$$\[
 \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}
-\]
-$$
+\]$$
+
 
 Where:
 - \( u(x, t) \) is a function representing the wave's displacement at position \( x \) and time \( t \).
