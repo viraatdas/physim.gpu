@@ -38,8 +38,8 @@ def wave_simulation_2d():
     u_history = sim.run(steps)
 
     # Animate the results and save as a GIF
-    # viz.animate(u_history, interval=interval, save=True, filename='wave_simulation_2d.gif', fps=30)
-    viz.animate(u_history, interval=interval)
+    viz.animate(u_history, interval=interval, fps=30)
+    
 
 
 
